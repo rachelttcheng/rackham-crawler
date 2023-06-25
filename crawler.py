@@ -226,7 +226,6 @@ def main():
 
             # if doc matches a doc in input list, assign value to the page the url was found on (parsed url)
             if potential_doc_name in files_to_be_found.keys():
-                identified_links.add(parsed_url.geturl())
                 # add parent page to list of pages where doc is linked from on site
                 files_to_be_found[potential_doc_name].append(current_url)
                 with open(output_log_filename, 'a') as output_log:
@@ -234,9 +233,8 @@ def main():
                     output_log.write(f"{files_to_be_found}\n")
                 # LOGGER.info(f"**DOC MATCH! Doc {potential_doc_name} found on page {current_url}\n")
                 # LOGGER.info(f"{files_to_be_found}\n")
-
             # check if HTML (new potential link)
-            if "text/html" in r.headers["content-type"]:
+            elif "text/html" in r.headers["content-type"]:
                 # add to identified links list + url frontier
                 with open(output_log_filename, 'a') as output_log:
                     output_log.write("status: PASSED CHECKS. ADDED TO URL FRONTIER\n")
