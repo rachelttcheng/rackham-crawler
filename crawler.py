@@ -9,7 +9,7 @@ Written by Rachel Cheng, Jun 2023."""
 import sys
 import os
 import requests
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 import logging
 
@@ -81,6 +81,9 @@ def main():
     # put seed URLs through URL filter
     url_frontier = []
     for url in potential_url_frontier:
+        # remove www from link
+        url = url.replace("www.","")
+
         # make all links have https protocol
         parsed_url = urlparse(url)
         parsed_url = parsed_url._replace(fragment="")
@@ -90,7 +93,7 @@ def main():
             output_log.write(f"====={parsed_url.geturl()}=====\n")
         # LOGGER.info(f"====={parsed_url.geturl()}=====")
 
-        # check if url is within acceptable domain(s)
+        # check if url is within acceptable domain(s), also removing "www" from domain to normalize
         within_domain = False
         for domain in acceptable_domains:
             if domain == parsed_url.netloc:
@@ -158,15 +161,19 @@ def main():
             # remove trailing forward slash and/or whitespace if it exists
             potential_url = potential_url.rstrip('/')
             potential_url = potential_url.strip()
+
+            # remove www from link
+            potential_url = potential_url.replace("www.","")
+
             # parse url
             parsed_url = urlparse(potential_url)
-            # if url is relative link, don't crawl it (this crawler will NOT handle relative links)
-            if (parsed_url.scheme != 'http') and (parsed_url.scheme != 'https'):
+
+            # if url is relative link, transform to absolute
+            if (bool(parsed_url.netloc) == False):
+                parsed_url = urlparse(urljoin(current_url, parsed_url.geturl()))
+
                 with open(output_log_filename, 'a') as output_log:
-                    output_log.write(f"status: URL scheme not 'http' or 'https'; info: {parsed_url}\n")
-                # LOGGER.info(f"status: URL scheme not 'http' or 'https'; info: {parsed_url}\n")
-                # LOGGER.info(f"url frontier status: {url_frontier}\n")
-                continue
+                    output_log.write(f"status: relative URL resolved to absolute: {parsed_url}\n")
 
             with open(output_log_filename, 'a') as output_log:
                 output_log.write(f"======{potential_url}======\nsource page: {current_url}\n")
@@ -200,7 +207,7 @@ def main():
 
             if not within_domain:
                 with open(output_log_filename, 'a') as output_log:
-                    output_log.write("status: OUTSIDE OF ACCEPTABLE DOMAIN(S)\n")
+                    output_log.write(f"status: OUTSIDE OF ACCEPTABLE DOMAIN(S); netloc: {parsed_url.netloc}\n")
                 # LOGGER.info("status: OUTSIDE OF ACCEPTABLE DOMAIN(S)\n")
                 # LOGGER.info(f"url frontier status: {url_frontier}\n")
                 continue
