@@ -30,7 +30,7 @@ riw-itemized-budget-report.new.xlsx
 rira-project-expense-sheet.xls
 resourcefair.pdf
 Requesting_Relevant_Masters_Dept_Process.pdf
-Requesting%20Relevant%20Masters%20Dept%20Process.pdf
+Requesting Relevant Masters Dept Process.pdf
 regprecand.through2005.pdf
 regprecand.10.08.pdf
 regcand.through2005.pdf
@@ -51,13 +51,13 @@ rackham-communication-for-extended-time-to-degree.pdf
 rackham-building.pdf
 rackham-and-signnow.pdf
 rackham-admissions-manual.pdf
-QUICK%20LIST%20OF%20RESPONSIBILITIES%20FOR%20THE.pdf
+QUICK LIST OF RESPONSIBILITIES FOR THE.pdf
 AcademicIntegrity.pdf
 Predoc_16_Digital.pdf
 Predoc15_Single_Pages.pdf
 Predoc-2017.pdf
 Predoc-18.pdf
-Pre-semester%20checklist.pdf
+Pre-semester checklist.pdf
 VSAPP.pdf
 postcards.pdf
 Parent_Accomm_vs_LOA_Family.pdf
@@ -122,20 +122,20 @@ SGPE_TransitioningPoints_Final2021.pdf
 MDES_Two_Pager_2022.pdf
 MDES_Two_Pager_2020.pdf
 MDES_Two_Pager_2019.pdf
-2020%20Results%20Wellbeing%20Report.pdf
-2020%20Results%20International%20Students%20Report.pdf
-2020%20Results%20Housing.pdf
-2020%20Results%20Housing%20Report.pdf
-2019%20Results%20Wellbeing%20Report.pdf
-2019%20Results%20International%20Students%20Report.pdf
-2019%20Results%20Housing.pdf
-2019%20Results%20Housing%20Report.pdf
-2018%20Results%20International%20Students%20Report.pdf
-2018%20Results%20Housing.pdf
-2018%20Results%20Housing%20Report.pdf
-2017%20Results%20International%20Students%20Report.pdf
-2017%20Results%20Housing.pdf
-2017%20Results%20Housing%20Report.pdf
+2020 Results Wellbeing Report.pdf
+2020 Results International Students Report.pdf
+2020 Results Housing.pdf
+2020 Results Housing Report.pdf
+2019 Results Wellbeing Report.pdf
+2019 Results International Students Report.pdf
+2019 Results Housing.pdf
+2019 Results Housing Report.pdf
+2018 Results International Students Report.pdf
+2018 Results Housing.pdf
+2018 Results Housing Report.pdf
+2017 Results International Students Report.pdf
+2017 Results Housing.pdf
+2017 Results Housing Report.pdf
 10-1108_SGPE-05-2019-0053.pdf
 math.pdf
 Masters_Quicklist.pdf
@@ -202,7 +202,7 @@ GradAppCorrectionsandDegreeClearance.pdf
 grad-student-disability-accommodation-experiences-umich.pdf
 GPSAW-Proclamation.pdf
 Gibbs-PLoS-ONE-GenderEthnicity.pdf
-FundingFlyer%20for%208-8.jpg
+FundingFlyer for 8-8.jpg
 2308.pdf
 2306.pdf
 fobgapt-workshop-7-how-to-assess-and-balance-phd-supply-and-demand-now-and-in-the-future.pdf
@@ -403,18 +403,18 @@ aaguest.pdf
 2015-FASEB-report.pdf
 2015-fall-welcome-info-fair-organizations.pdf
 2015-Daniels-PNAS.pdf
-2014_Orientation%20Resources.pdf
+2014_Orientation Resources.pdf
 2014-Trainee-perspective-F1000.pdf
 2014-Rackham-Report.pdf
 2012_RackhamCentennialSymposiumFlyer01.pdf
-2012%20NIH%20Workforce%20Report.pdf
+2012 NIH Workforce Report.pdf
 2009_PreCand_School_CollegeTotals_Detail.pdf
 2009_Cand_School_CollegeTotals_Detail.pdf
 2009-health-and-wellness-survey-respondent-report.pdf
 2008_PreCand_School_CollegeTotals_Detail_20090505.pdf
 2008_PreCand_School_CollegeTotals_Detail.pdf
-2008%20PreCand_School_CollegeTotals_Detail.pdf
-2008%20Cand_School_CollegeTotals_Detail.pdf
+2008 PreCand_School_CollegeTotals_Detail.pdf
+2008 Cand_School_CollegeTotals_Detail.pdf
 2007TuitionSources.pdf
 2006-health-and-wellness-survey-interesting-findings.pdf
 1977EncyclopedicSurvey.pdf
