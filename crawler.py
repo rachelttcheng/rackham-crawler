@@ -13,21 +13,11 @@ from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 import logging
 
-# using 
+# log output if desired 
 LOGGER = logging.getLogger(__name__)
 logging.basicConfig(level = logging.INFO)
 
-# INPUT FILE: Each document name should be on its own line!
-# e.g.
-#
-# filename1.pdf
-# filename2.docx
-# filename3.pptx
-# ...
-# filenamex.pdf
 
-# run program using command like this:
-# % python3 crawler.py seedURL.txt input-documents.txt
 def main():
     output_log_filename = "output_log.txt"
     with open(output_log_filename, 'w') as output_log:
@@ -68,10 +58,8 @@ def main():
         input_filenames = input_files.read().splitlines()
         # initialize value of each filename as empty list of parent pages
         for filename in input_filenames:
-            files_to_be_found[filename] = []
+            files_to_be_found[filename] = set()
 
-    with open(output_log_filename, 'a') as output_log:
-        output_log.write(f"Seed URL(s): {potential_url_frontier}\nDocument(s) to be found on site: {files_to_be_found.keys()}\n")
     # LOGGER.info(f"Seed URL(s): {potential_url_frontier}\nDocument(s) to be found on site: {files_to_be_found.keys()}")
 
     # sets to prevent crawl loops
@@ -91,7 +79,7 @@ def main():
         
         with open(output_log_filename, 'a') as output_log:
             output_log.write(f"====={parsed_url.geturl()}=====\n")
-        # LOGGER.info(f"====={parsed_url.geturl()}=====")
+        LOGGER.info(f"====={parsed_url.geturl()}=====")
 
         # check if url is within acceptable domain(s), also removing "www" from domain to normalize
         within_domain = False
@@ -145,21 +133,14 @@ def main():
 
         # Parse P to obtain list of new links N.
         soup = BeautifulSoup(response.text, 'html.parser')
-        with open(output_log_filename, 'a') as output_log:
-                output_log.write(f"all links on page {current_url}: {soup.find_all('a')}\n\n")
-        # LOGGER.info(f"all links on page {current_url}: {soup.find_all('a')}")
         for link in soup.find_all('a'):
             # get url
             potential_url = link.get('href')
             if (potential_url == None):
-                with open(output_log_filename, 'a') as output_log:
-                    output_log.write("status: url of NONE type\n")
                 # LOGGER.info("status: url of NONE type\n")
-                # LOGGER.info(f"url frontier status: {url_frontier}\n")
                 continue
         
-            # remove trailing forward slash and/or whitespace if it exists
-            potential_url = potential_url.rstrip('/')
+            # remove whitespace if it exists
             potential_url = potential_url.strip()
 
             # remove www from link
@@ -177,10 +158,11 @@ def main():
 
             with open(output_log_filename, 'a') as output_log:
                 output_log.write(f"======{potential_url}======\nsource page: {current_url}\n")
-            # LOGGER.info(f"======{potential_url}======\nsource page: {current_url}")
+            LOGGER.info(f"======{potential_url}======\nsource page: {current_url}")
 
-            # remove internal reference if it exists
+            # remove internal reference if it exists, remove trailing forward slash if it exists
             parsed_url = parsed_url._replace(fragment="")
+            parsed_url = urlparse(parsed_url.geturl().rstrip('/'))
             
             # make all links have https protocol
             parsed_url = parsed_url._replace(scheme="https")
@@ -234,7 +216,7 @@ def main():
             # if doc matches a doc in input list, assign value to the page the url was found on (parsed url)
             if potential_doc_name in files_to_be_found.keys():
                 # add parent page to list of pages where doc is linked from on site
-                files_to_be_found[potential_doc_name].append(current_url)
+                files_to_be_found[potential_doc_name].add(current_url)
                 with open(output_log_filename, 'a') as output_log:
                     output_log.write(f"**DOC MATCH! Doc {potential_doc_name} found on page {current_url}\n")
                     output_log.write(f"{files_to_be_found}\n")
@@ -249,15 +231,11 @@ def main():
                 identified_links.add(parsed_url.geturl())
                 url_frontier.append(parsed_url.geturl())
 
-    with open(output_log_filename, 'a') as output_log:
-        output_log.write("All links crawled. Starting output file creation...\n")
     LOGGER.info("All links crawled. Starting output file creation...\n")
 
     # create output file and write data to it (document, page on site that contains link to doc)
     output_filename = "document_sources.output"
     with open(output_filename, "w") as crawler_outfile:
-        with open(output_log_filename, 'a') as output_log:
-            output_log.write("Opened output file. Writing...\n")
         LOGGER.info("Opened output file. Writing...\n")
         # key: doc name
         # val: list of parent pages that link to doc
