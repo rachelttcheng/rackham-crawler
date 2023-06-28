@@ -5,7 +5,6 @@ Given a list of document names, the crawler will return whether or not the docum
 
 # Usage
 ```
-
 % python3 crawler.py seedURL.txt input-documents.txt
 ```
 
