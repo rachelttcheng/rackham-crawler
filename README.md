@@ -1,9 +1,9 @@
-# Description
+## Description
 
-This is a web crawler designed to crawl UMich Rackham's site.
-Given a list of document names, the crawler will return whether or not the document is linked on the site and its source page.
+This is a web scraper designed to crawl UMich Rackham's site.
+Given a list of document names, the crawler will return whether or not the document is linked on the site and its source page(s).
 
-# Usage
+## Usage
 ```
 % python3 crawler.py seedURL.txt input-documents.txt
 ```
@@ -16,9 +16,10 @@ Given a list of document names, the crawler will return whether or not the docum
 > Note: if the document name contains spaces, DO NOT use %20 in place of a space - simply include the space in the doc name
 
 
-# Language(s) Used
+## Language(s) Used
 
 - Python
+
 
 
 
